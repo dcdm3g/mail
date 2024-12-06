@@ -1,0 +1,17 @@
+services:
+  postgresql:
+    image: bitnami/postgresql
+    container_name: mail-postgresql
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=mail
+
+volumes:
+ postgresql:
+    driver: local
