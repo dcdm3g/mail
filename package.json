@@ -17,6 +17,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@elysiajs/swagger": "^1.1.6",
     "@prisma/client": "6.0.1",
     "elysia": "^1.1.26",
     "zod": "^3.23.8"

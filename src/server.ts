@@ -1,9 +1,16 @@
+import { swagger } from '@elysiajs/swagger'
 import { PrismaClient } from '@prisma/client'
 import { Elysia, t } from 'elysia'
 
 const prisma = new PrismaClient()
 
 const app = new Elysia()
+  .use(
+    swagger({
+      documentation: { info: { title: 'Mail API', version: '1.0.0' } },
+      path: '/reference',
+    }),
+  )
   .post(
     '/emails',
     async ({ set, body }) => {
@@ -22,9 +29,16 @@ const app = new Elysia()
       })
     },
     {
+      detail: {
+        summary: 'Register Email',
+        description: 'Register an email to the database.',
+      },
       body: t.Object({
         email: t.String({ format: 'email' }),
       }),
+      response: {
+        201: t.Void(),
+      },
     },
   )
   .listen(3000)
