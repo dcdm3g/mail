@@ -1,3 +1,4 @@
+import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
 import { PrismaClient } from '@prisma/client'
 import { Elysia, t } from 'elysia'
@@ -5,6 +6,7 @@ import { Elysia, t } from 'elysia'
 const prisma = new PrismaClient()
 
 const app = new Elysia()
+  .use(cors())
   .use(
     swagger({
       documentation: { info: { title: 'Mail API', version: '1.0.0' } },
